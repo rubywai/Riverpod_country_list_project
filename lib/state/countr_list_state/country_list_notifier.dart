@@ -2,11 +2,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/model/country_list_model.dart';
-import '../../data/service/country_list_service.dart';
+import '../../data/service/country_service.dart';
 import 'country_list_state.dart';
 
 class CountryListNotifier extends Notifier<CountryListState>{
-  final CountryListService _countryListService = CountryListService();
+  final CountryService _countryListService = CountryService();
   @override
   CountryListState build() {
     return CountryListLoading();

@@ -1,6 +1,7 @@
+import 'package:country_list/ui/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:go_router/go_router.dart';
 import 'ui/pages/home.dart';
 
 void main() {
@@ -12,13 +13,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+     routerConfig: GoRouter(
+       routes: [
+         GoRoute(path: '/',
+         builder: (context,routeState){
+           return const Home();
+         },),
+         GoRoute(path: '/name/:name',
+         builder: (context,routeState){
+           String? name = routeState.pathParameters['name'] ?? '';
+           return CountryDetailPage(name: name);
+         },)
+       ]
+     ),
     );
   }
 }
