@@ -1,4 +1,5 @@
 import 'package:country_list/ui/pages/detail_page.dart';
+import 'package:country_list/ui/widget/error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -31,6 +32,13 @@ class MyApp extends StatelessWidget {
            return CountryDetailPage(name: name);
          },)
        ],
+       errorBuilder: (context,_){
+         return Material(
+           child: FailedWidget(errorMessage: 'invalid route', tryAgain: (){
+             context.go("/");
+           }),
+         );
+       }
      ),
     );
   }

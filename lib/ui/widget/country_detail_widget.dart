@@ -30,8 +30,12 @@ class CountryDetailWidget extends StatelessWidget {
               trailing: Text(model.region?? ''),
             ),
             ListTile(
-              title: const Text('Region'),
+              title: const Text('Sub-region'),
               trailing: Text(model.subregion?? ''),
+            ),
+            ListTile(
+              title: const Text('Capital'),
+              trailing: Text(model.capital?.join(",") ?? ''),
             ),
             if(flagLink != null)
             Image.network(flagLink)

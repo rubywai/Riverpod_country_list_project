@@ -22,9 +22,17 @@ class _CountryDetailPageState extends ConsumerState<CountryDetailPage> {
   @override
   void initState() {
     super.initState();
+   _getCountryDetail();
+  }
+  void _getCountryDetail(){
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-        ref.read(countryDetailProvider.notifier).getCountry(widget.name.toLowerCase());
+      ref.read(countryDetailProvider.notifier).getCountry(widget.name.toLowerCase());
     });
+  }
+  @override
+  void didUpdateWidget(covariant CountryDetailPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _getCountryDetail();
   }
 
   @override
