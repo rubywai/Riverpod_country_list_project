@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
            String? name = routeState.pathParameters['name'] ?? '';
            return CountryDetailPage(name: name);
          },)
-       ]
+       ],
      ),
     );
   }
